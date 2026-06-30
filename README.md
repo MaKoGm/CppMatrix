@@ -1,13 +1,39 @@
-# 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/c-matrix.git
-cd c-matrix
+# C++ Matrix Clone
 
-# 2. Crear una carpeta de construcción y entrar en ella
-mkdir build && cd build
+Un clon ligero, rápido y configurable del clásico efecto de "The Matrix" para la terminal, escrito en C++
 
-# 3. Dejar que CMake genere un Makefile específico para el ordenador del usuario
-cmake ..
+## Características
+- **Adaptable:** Se redimensiona automáticamente al cambiar el tamaño de la ventana de la terminal.
+- **Controlable:** Permite ajustar la velocidad, densidad y colores mediante argumentos.
 
-# 4. Compilar e instalar
-make
-sudo make install
+## Instalación 
+1. **Clona el repositorio:**
+    git clone https://github.com/MaKoGm/CppMatrix.git
+    cd Cppmatrix
+
+2. **Crea la carpeta de compilación:**
+    mkdir build && cd build
+    Compila e instala: 
+
+3. **Instalar el programa**
+    cmake ..
+    make
+    sudo make install
+
+---
+## Uso 
+Una vez instalado, puedes ejecutarlo desde cualquier terminal simplemente escribiendo:
+
+c++matrix
+Opciones disponibles:
+-v <num> : Velocidad (ej: 1, 2, 5). Por defecto: 1
+
+-d <num> : Densidad (ej: 0.5, 1.5). Por defecto: 0.8
+
+-c <color>: Color (red, yellow, blue, magenta). Por defecto: verde
+
+-h       : Muestra el menú de ayuda.
+
+---
+## Licencia 
+Este proyecto es libre para uso personal y educativo. Siéntete libre de experimentar con el código!
