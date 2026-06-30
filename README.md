@@ -20,7 +20,10 @@ Un clon ligero, rápido y configurable del clásico efecto de "The Matrix" para 
     make
     sudo make install
 
----
+## Desistalar
+La forma más facil es eliminar el ejecutable que hemos generado
+    sudo rm /usr/local/bin/cmatrix_clon
+    
 ## Uso 
 Una vez instalado, puedes ejecutarlo desde cualquier terminal simplemente escribiendo:
 
@@ -32,8 +35,8 @@ Opciones disponibles:
 
 -c <color>: Color (red, yellow, blue, magenta). Por defecto: verde
 
--h       : Muestra el menú de ayuda.
+-h: Muestra el menú de ayuda.
 
----
+
 ## Licencia 
 Este proyecto es libre para uso personal y educativo. Siéntete libre de experimentar con el código!
