@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 
     screen_size(rows, columns);
 
-    buffer_dinamico.assign(rows, std::vector<char>(columns, ' '));
+    buffer_dinamico.assign(rows + 1, std::vector<char>(columns, ' '));
 
     int rows_act = rows, columns_act = columns;
     int num_opt = density * columns_act;
@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
         screen_size(rows, columns);
         if (columns != columns_act || rows != rows_act)
         {
-            buffer_dinamico.assign(rows, std::vector<char>(columns, ' '));
+            buffer_dinamico.assign(rows + 1, std::vector<char>(columns, ' '));
 
             num_opt = density * columns;
             columns_act = columns;
@@ -155,7 +155,7 @@ void clear_buffer()
     }
     */
     // una forma más rápida de hacerlo cuando usamos el std::vector
-    buffer_dinamico.assign(rows, std::vector<char>(columns, ' '));
+    buffer_dinamico.assign(rows + 1, std::vector<char>(columns, ' '));
 }
 
 void flush_buffer(const int &colour)
@@ -166,31 +166,38 @@ void flush_buffer(const int &colour)
     {
         for (int j = 0; j < columns; j++)
         {
-            if (i == rows - 1 || buffer_dinamico[i + 1][j] == ' ')
+            if (buffer_dinamico[i][j] == ' ')
             {
-                std::cout << "\033[1;37m" << buffer_dinamico[i][j];
+                std::cout << ' ';
             }
             else
             {
-                switch (colour)
+                if (buffer_dinamico[i + 1][j] == ' ')
                 {
-                case 0:
-                    std::cout << "\033[32m";
-                    break; // Verde
-                case 1:
-                    std::cout << "\033[31m";
-                    break; // Rojo
-                case 2:
-                    std::cout << "\033[33m";
-                    break; // Amarillo
-                case 3:
-                    std::cout << "\033[34m";
-                    break; // Azul
-                case 4:
-                    std::cout << "\033[35m";
-                    break; // Magenta
+                    std::cout << "\033[1;37m" << buffer_dinamico[i][j]; // Blanco
                 }
-                std::cout << buffer_dinamico[i][j];
+                else
+                {
+                    switch (colour)
+                    {
+                    case 0:
+                        std::cout << "\033[32m";
+                        break; // Verde
+                    case 1:
+                        std::cout << "\033[31m";
+                        break; // Rojo
+                    case 2:
+                        std::cout << "\033[33m";
+                        break; // Amarillo
+                    case 3:
+                        std::cout << "\033[34m";
+                        break; // Azul
+                    case 4:
+                        std::cout << "\033[35m";
+                        break; // Magenta
+                    }
+                    std::cout << buffer_dinamico[i][j];
+                }
             }
         }
         std::cout << "\n";
